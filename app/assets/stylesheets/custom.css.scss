@@ -1,0 +1,17 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.card {
+    background-color: rgb(61, 6, 6);
+}
+
+.navbar {
+    background-color: #000000 !important;
+    
+    .navbar-brand {
+        color: white !important;
+    }
+
+    .nav-link {
+        color: white !important;
+    }
+}
