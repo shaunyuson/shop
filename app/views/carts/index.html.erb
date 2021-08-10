@@ -10,10 +10,10 @@
           <a class="nav-link" href="<%= root_path%>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= items_path%>">Items</a>
+          <a class="nav-link" href="<%= items_path%>">Items</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%= about_path%>">About</a>
+          <a class="nav-link active" aria-current="page" href="<%= about_path%>">About</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -25,20 +25,24 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @item.title %>
-</p>
+<h1>My Cart</h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
+  <tbody>
+    
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<br>
+
+<%= link_to 'New Cart', new_cart_path %>

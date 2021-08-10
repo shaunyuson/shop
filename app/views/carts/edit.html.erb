@@ -17,16 +17,15 @@
           </li>
         </ul>
         <form class="d-flex">
-            <a class="btn btn-outline-success" href="<%= carts_path%>">Cart</a>
+          <a class="btn btn-outline-success" href="<%= carts_path%>">Cart</a>
         </form>
       </div>
     </div>
   </nav>
 
-  <br>
+<h1>Editing Cart</h1>
 
-<h1>New Item</h1>
+<%= render 'form', cart: @cart %>
 
-<%= render 'form', item: @item %>
-
-<%= link_to 'Back', items_path %>
+<%= link_to 'Show', @cart %> |
+<%= link_to 'Back', carts_path %>

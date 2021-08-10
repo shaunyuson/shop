@@ -26,8 +26,7 @@
           </li>
         </ul>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <a class="btn btn-outline-success" href="<%= carts_path%>">Cart</a>
         </form>
       </div>
     </div>
@@ -35,7 +34,7 @@
 
   <p id="notice"><%= notice %></p>
 
-<h1>Welcome to Items</h1>
+<h1>Item Catalog</h1>
 
 <table>
   <thead>
@@ -56,6 +55,7 @@
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Add to Cart', cart_items_path(item_id: item.id) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -27,18 +27,23 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @item.title %>
+  <%= @cart.title %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @item.description %>
+  <%= @cart.description %>
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @item.price %>
+  <%= @cart.price %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<p>
+  <strong>Amount:</strong>
+  <%= @cart.amount %>
+</p>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>
