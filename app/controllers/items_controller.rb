@@ -49,10 +49,25 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1 or /items/1.json
   def destroy
-    @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: "Item was successfully destroyed." }
-      format.json { head :no_content }
+    set_cart
+    cart_items = @cart.cart_item
+    in_cart = false
+    cart_items.each do |item|
+        if item.item.title == @item.title
+          in_cart = true
+        end
+      end
+    if in_cart
+      respond_to do |format|
+        format.html { redirect_to items_url, notice: "Item is currently in a cart." }
+        format.json { head :no_content }
+      end
+    else
+      @item.destroy
+      respond_to do |format|
+        format.html { redirect_to items_url, notice: "Item was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 
