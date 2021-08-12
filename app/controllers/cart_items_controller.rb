@@ -23,7 +23,10 @@ class CartItemsController < ApplicationController
   def create
     set_cart
     item = Item.find(params[:item_id])
-    @cart_item = @cart.add_item(item)
+    @cart_item = CartItem.new
+    @cart_item.item = item
+    @cart_item.cart = @cart
+    @cart.cart_item << @cart_item
 
     respond_to do |format|
       if @cart_item.save

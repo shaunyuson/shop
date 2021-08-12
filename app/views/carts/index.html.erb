@@ -25,21 +25,32 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>My Cart</h1>
+<h1>My Carts</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Amount</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th>Created</th>
+      <th>Updated</th>
+      <th>Actions</th>
+      <th>Items</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
   <tbody>
-    
+    <% Cart.all.each do |cart| %>
+      <tr>
+        <td><%= cart.id %></td>
+        <td><%= cart.created_at %></td>
+        <td><%= cart.updated_at %></td>
+        <td><%= link_to 'Show', cart %></td>
+        <% cart.cart_item.each do |item| %>
+        <td><%= item.item.title %></td>
+        <% end %>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 
