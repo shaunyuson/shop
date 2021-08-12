@@ -25,17 +25,36 @@
 
 <p id="notice"><%= notice %></p>
 
-<% @cart.cart_item.each do |item| %>
+<table>
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Actions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart.cart_item.each do |item| %>
       <tr>
         <td><%= item.item.title %></td>
         <td><%= item.item.description %></td>
         <td><%= item.item.price %></td>
         <td><%= link_to 'Show', item.item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item.item) %></td>
-        <td><%= link_to 'Destroy', item.item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= button_to 'Add to Cart', cart_items_path(item_id: item.id) %></td>
+        <td><%= link_to 'Remove from Cart', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-<% end %>
-
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+    <% end %>
+    <br>
+    <tr>
+      <td>
+        <% @sum = 0 %>
+        <% @cart.cart_item.each do |item| %>
+        <% @sum += item.item.price %>
+        <% end %>
+        Total Cost: <%= @sum %></td>
+      </td>
+    </tr>
+  </tbody>
+</table>
