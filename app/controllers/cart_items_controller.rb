@@ -56,7 +56,7 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item.destroy
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: "Cart item was successfully destroyed." }
+      format.html { redirect_to carts_url, notice: "Cart item was successfully removed." }
       format.json { head :no_content }
     end
   end

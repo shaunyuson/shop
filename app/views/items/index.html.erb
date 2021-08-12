@@ -35,8 +35,9 @@
   <p id="notice"><%= notice %></p>
 
 <h1>Item Catalog</h1>
+<br>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Title</th>
@@ -59,7 +60,28 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
+
+<div class="col-lg-9">
+  <div class="row">
+    <% @items.each do |item| %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= item.title %></h5>
+        <p class="card-text"><%= item.description %></p>
+        <p class="card-text"><%= item.price %></p>
+            <%= link_to 'Show', item, class: "btn btn-primary btn-sm" %>
+            <%= link_to 'Edit', edit_item_path(item), class: "btn btn-primary btn-sm" %>
+            <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-sm" %>
+            <br>
+            <br>
+            <%= button_to 'Add to Cart', cart_items_path(item_id: item.id), class: "btn btn-primary btn-sm" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
 
 <br>
 
