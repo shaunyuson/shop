@@ -22,12 +22,24 @@ class CartItemsController < ApplicationController
   # POST /cart_items or /cart_items.json
   def create
     set_cart
-    item = Item.find(params[:item_id])
-    @cart_item = CartItem.new
-    @cart_item.item = item
-    @cart_item.cart = @cart
-    @cart.cart_item << @cart_item
-
+    @item = Item.find(params[:item_id])
+    cart_items = @cart.cart_item
+    in_cart = false
+    cart_items.each do |c|
+        if c.item.title == @item.title
+          in_cart = true
+          @cart_item = c
+          @cart_item.quantity += 1
+        end
+      end
+    if !in_cart
+      @cart_item = CartItem.new
+      @cart_item.item = @item
+      @cart_item.cart = @cart
+      @cart_item.quantity = 1
+      @cart.cart_item << @cart_item
+    end
+    
     respond_to do |format|
       if @cart_item.save
         format.html { redirect_to @cart_item.cart, notice: "Cart item was successfully added." }

@@ -1,11 +1,23 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+body {
+    background-image: url(navbar.jpg);
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
 .card {
-    background-color: rgb(16, 233, 204);
+    background-color: rgb(238, 208, 76);
+    transition: background-color 0.5s ease;
+}
+
+.card:hover {
+    background-color: rgb(255, 174, 0);
 }
 
 .navbar {
-    background-color: #000000 !important;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 85%);
     
     .navbar-brand {
         color: white !important;
@@ -13,6 +25,12 @@
 
     .nav-link {
         color: white !important;
+    }
+
+    .nav-link:hover {
+        .nav-item{
+            color: transparent !important;
+        }
     }
 
     .btn{
@@ -27,5 +45,14 @@
 
 .card{
     margin-right: 5em;
-    margin-bottom: 5em;
+    margin-bottom: 2em;
+}
+
+.card-title{
+    display:inline-block;
+
+}
+
+.card-right {
+    float: right;
 }

@@ -6,9 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="<%= root_path%>">Home</a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<%= items_path%>">Items</a>
         </li>
@@ -25,23 +23,52 @@
 
 <p id="notice"><%= notice %></p>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Item Name</th>
       <th>Description</th>
       <th>Price</th>
+      <th>Quantity</th>
       <th>Actions</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+  </thead> -->
 
-  <tbody>
+  <h1>My Cart</h1>
+  <br>
+  <div class="col-lg-9">
+    <div class="row">
+      <% @cart.cart_item.each do |item| %>
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-title">Name: <%= item.item.title %></h5>
+          <h5 class="card-right">Price: <%= item.item.price %>, Quantity: <%= item.quantity %></h5>
+          <p class="card-text">Description: <%= item.item.description %></p>
+              <%= link_to 'Show', item.item, class: "btn btn-primary btn-sm" %>
+              <%= link_to 'Remove from Cart', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-sm" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    <div class="card" style="width: 30rem;">
+      <div class="card-body">
+        <% @sum = 0 %>
+        <% @cart.cart_item.each do |item| %>
+        <% @sum += (item.item.price * item.quantity) %>
+        <% end %>
+        <h5 class="card-title">Total Cost: <%= @sum %></td></h5>
+      </div>
+    </div>
+  </div>
+
+  <!-- <tbody>
     <% @cart.cart_item.each do |item| %>
       <tr>
         <td><%= item.item.title %></td>
         <td><%= item.item.description %></td>
         <td><%= item.item.price %></td>
+        <td><%= item.quantity %></td>
         <td><%= link_to 'Show', item.item %></td>
         <td><%= link_to 'Remove from Cart', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -57,4 +84,4 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->

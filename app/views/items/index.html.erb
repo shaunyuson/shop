@@ -15,9 +15,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="<%= root_path%>">Home</a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="<%= items_path%>">Items</a>
           </li>
@@ -67,6 +65,8 @@
     <% @items.each do |item| %>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
+        <%= image_tag "item.jpg", class: "card-img-top" %>
+        <br><br>
         <h5 class="card-title"><%= item.title %></h5>
         <p class="card-text"><%= item.description %></p>
         <p class="card-text"><%= item.price %></p>
